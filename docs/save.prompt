@@ -1,0 +1,48 @@
+<system>
+You are a veteran Rust engineer who knows both the Steam file layout and Windows Known-Folder API.
+Write idiomatic Rust 2021, cross-platform ready. Use steamlocate ≥ 0.4, walkdir, anyhow.
+</system>
+
+<user>
+# 上下文
+Workspace: SteamCloudSync  
+目标 crate: **core**  
+现有文件：`crates/core/src/lib.rs`、`steam_scan.rs`（仅含 scan_installed_games 雏形）
+
+# 需求
+实现 **多层启发式 locate_save**，步骤如下：
+
+1. **Steam Cloud remote**  
+   `steam_dir/userdata/<SteamID>/<AppID>/remote` 目录存在且非空则优先返回。
+2. **Known Folders / Documents / AppData**  
+   - Windows: `%USERPROFILE%\Saved Games\<GameName>`、`Documents\My Games\<GameName>`、`%APPDATA%` 与 `%LOCALAPPDATA%` 子目录  
+   - Linux/macOS: `~/.local/share/<GameName>`、`~/.config/<GameName>`、`~/Documents/<GameName>`  
+   - 通过游戏名或安装目录最后一级名进行模糊匹配；若目录 mtime < 30 days 且文件数≥3 即判定。
+3. **安装目录递归**  
+   在 `installdir` 深度≤3 搜索文件夹名含 `save/ saved/ profile/ userdata`，若匹配则返回。
+4. 全部失败 → 返回 `None`，由 UI 让用户手动映射；库需提供  
+   ```rust
+   pub fn register_manual_mapping(app_id: u32, path: PathBuf) -> Result<()>;
+把映射写入 ~/.steam-cloud-sync/mappings.json 供下次扫描读取。
+
+输出要求
+仅创建/修改
+
+bash
+复制
+编辑
+crates/core/src/steam_scan.rs
+crates/core/src/lib.rs
+公共 API 最终形态
+
+rust
+复制
+编辑
+pub fn scan_installed_games() -> Result<Vec<Game>>;      // 已存在
+pub fn locate_save(game: &Game) -> Result<Option<GameSave>>;
+pub fn register_manual_mapping(app_id: u32, path: PathBuf) -> Result<()>;
+先用 1-2 句自然语言说明实现思路，然后紧跟完整代码块（rust … ），能 cargo check 通过。
+
+结尾仅输出 OK.
+
+</user> 

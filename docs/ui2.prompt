@@ -1,0 +1,57 @@
+<system>
+You are a senior Rust & WinUI 3 engineer.  
+Follow Fluent Design, write idiomatic Rust 2021 using windows-rs + WinApp SDK 1.5.  
+Keep code self-contained and `cargo check` clean.
+</system>
+
+<user>
+# 项目背景
+Workspace: **SteamCloudSync**  
+现有 crates: core, cloud, ui  
+本次只修改 `ui` crate（WinUI 3 前端）。
+
+# 目标
+为 **HomePage 游戏列表** 实现以下 UI/UX 改进：
+
+1. **分组折叠**
+   - 将游戏按 `SyncState` 分为三组：`Pending` / `Synced` / `Unknown`  
+   - 使用 `Expander` 或 `GroupStyle`，默认展开 “Pending”，其余折叠。  
+2. **左侧色条**
+   - 每行左边 4 px `Rectangle` 绑定状态配色：  
+     * Accent = Synced、Amber = Pending、Gray = Unknown。  
+3. **行内进度**
+   - 上传 / 下载时，在行缩略图位置覆盖 `ProgressBar`（Range 0–100）。  
+   - 进度条只在同步中可见，完成后隐藏。  
+4. **批量工具栏**
+   - HomePage 顶部 Toolbar 显示：  
+     * Refresh 按钮  
+     * Sync Now (n) – 选中待同步条目数量  
+     * “Used  x GB / y GB” (云端空间)  
+   - 选中状态改变时动态更新 `Sync Now` 按钮文本。  
+5. **路径折叠 + Tooltip**
+   - 默认隐藏冗长存档路径，只显示 “…\remote”；hover 时 `ToolTipService.ToolTip` 显示完整路径。  
+6. **撤销（Undo）**
+   - 同步成功后，在行右侧弹 `Snackbar` 提示 *Restored ✓ [Undo]* ，点 Undo → 使用 rollback ZIP 恢复并刷新状态。  
+7. **性能**
+   - 开启 `EnableVirtualization="True"`；行高不超过 42 px。  
+
+# 技术约束
+- 只修改 / 创建：
+crates/ui/src/pages/home.rs
+crates/ui/assets/pages/HomePage.xaml
+crates/ui/src/viewmodels/game_vm.rs # 新建 MVVM VM
+crates/ui/src/app_state.rs # 扩 PropertyChanged for counts
+
+markdown
+复制
+编辑
+- 已有接口：`core::scan_installed_games()`, `core::locate_save()`, 以及 `cloud::sync()`（async，返回进度）。
+- 颜色请引用 Fluent 系统资源，例如 `SystemAccentColor`, `SystemFillColorAttentionBackground`.
+
+# 输出规范
+1. **先**用 1–2 句自然语言说明思路。  
+2. **然后**给出 *所有改动后的完整文件内容*，用 ```rust / ```xml 代码块包裹；不得留解释文字。  
+3. 代码必须通过 `cargo check`.  
+4. 最后单独一行写 `OK`.
+
+</user>

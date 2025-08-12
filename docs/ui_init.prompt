@@ -1,0 +1,54 @@
+<system>
+You are a senior Rust desktop developer and WinUI 3 architect.  
+Write idiomatic Rust 2021, use windows-rs & Windows App SDK ≥ 1.5, XAML files stored in crates/ui/assets.  
+Always follow Fluent Design, respect light/dark mode, and embed i18n via Resources.resw.
+</system>
+
+<user>
+# 项目上下文
+Workspace: **SteamCloudSync**  
+现有 crates:  
+- core   (业务逻辑，已有 API scan_installed_games / locate_save)  
+- cloud  (OneDrive / S3 适配)  
+需新建 / 完善 crate: **ui**
+
+# UI 目标与信息架构
+1. **MainWindow**  
+   - 自定义 `AppWindowTitleBar`，标题来自资源键 `AppTitle`  
+   - `NavigationView`(Left) + `Frame` 内容区  
+   - MenuItems: Home, History, Settings  
+2. **HomePage**  
+   - `ListView` 绑定 `core::scan_installed_games()` 结果  
+   - 行模板：圆角缩略图、游戏名、上次同步时间、InfoBadge 显示 ✓ / ⟳ / ⚠  
+   - 顶部 `CommandBar` 含按钮 `SyncNow` 与 `Refresh`  
+3. **DetailPage**  
+   - `TabbedCommandBar` 或 `Tabs`：**本地存档** / **云端版本**  
+   - 本地页：`TreeView` 展示 locate_save 路径；云端页：Card 列最近上传 ZIP（版本号、哈希、时间）  
+4. **HistoryPage**  
+   - `DataGrid` 表：方向 ↑/↓、耗时、结果  
+5. **SettingsPage**  
+   - 语言 `ComboBox` (en-US / zh-CN) → 写入 `ApplicationLanguages::PrimaryLanguageOverride`  
+   - 云端后端 `RadioButtons` (OneDrive / S3) + 凭据 `TextBox`  
+   - `ToggleSwitch`：开机自启 / 限速  
+6. **主题与动效**  
+   - 深浅色随系统自动；NavigationView/Frame 切换用 EntranceTransition  
+   - 同步时用 Lottie “cloud-sync” 替代 ProgressRing  
+
+# i18n 资源
+建立  
+crates/ui/Strings/
+├─ en-US/Resources.resw
+└─ zh-CN/Resources.resw
+
+ruby
+复制
+编辑
+并至少包含键：AppTitle, SyncNow, Home, History, Settings, Scanning, LastSync.
+
+# 输出要求
+- **仅**创建或修改 `crates/ui/**` 下文件：`Cargo.toml`, `src/lib.rs`, `src/main.rs`, `src/pages/*.rs`, 以及所有对应 `.xaml`.  
+- 生成完整文件树与所有源码，包裹在 ```rust / ```xml / ```resw 代码块中；中间不得插入解释文字。  
+- 代码必须 `cargo check` 通过；使用 `windows::Result<()>` 作为 main 返回类型。  
+- 先用 1-2 句自然语言 **思路说明**，随后立刻给出全部代码块；文件末尾仅写 `OK`.
+
+</user>

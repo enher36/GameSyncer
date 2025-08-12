@@ -1,0 +1,78 @@
+# Rust
+/target/
+Cargo.lock
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+*.exe
+*.pdb
+*.dll
+*.so
+*.dylib
+
+# Logs and debug files
+*.log
+log.txt
+debug_*.txt
+startup_*.txt
+*.out
+
+# Test files
+test_*.rs
+test_*.exe
+test_*.pdb
+analyze_*.rs
+analyze_*.exe
+analyze_*.pdb
+checksum_*.rs
+checksum_*.exe
+checksum_*.pdb
+download_test_*.rs
+download_test_*.exe
+download_test_*.pdb
+
+# Temporary files
+*.tmp
+*.temp
+nul
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Application data
+steam-cloud-sync.db
+mappings.json
+
+# Backup files
+*.bak
+*.backup
+
+# Configuration files that might contain secrets
+.env
+*.local
+
+# Windows
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+
+# macOS
+*.dmg
+
+# Linux
+*.AppImage
+*.deb
+*.rpm

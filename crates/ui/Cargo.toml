@@ -1,0 +1,26 @@
+[package]
+name = "steam-cloud-sync-ui"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "steam-cloud-sync"
+path = "src/main.rs"
+
+[dependencies]
+steam-cloud-sync-core = { path = "../core" }
+steam-cloud-sync-cloud = { path = "../cloud" }
+steam-cloud-sync-persistence = { path = "../persistence" }
+tokio = { workspace = true, features = ["full"] }
+serde = { workspace = true }
+anyhow = { workspace = true }
+chrono = { version = "0.4", features = ["serde", "clock"] }
+eframe = "0.24"
+egui = "0.24"
+egui_extras = "0.24"
+rfd = "0.12"
+dirs = "5.0"
+serde_json = "1.0"
+env_logger = "0.10"
+uuid = { workspace = true, features = ["v4"] }
+winapi = { version = "0.3", features = ["winuser", "windef"] }

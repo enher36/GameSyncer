@@ -1,0 +1,16 @@
+[package]
+name = "steam-cloud-sync-core"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+serde = { workspace = true }
+serde_json = { workspace = true }
+anyhow = { workspace = true }
+thiserror = { workspace = true }  
+uuid = { workspace = true }
+regex = "1.0"
+dirs = "5.0"
+steamlocate = "2.0"
+walkdir = "2.0"
+chrono = { version = "0.4", features = ["serde"] }

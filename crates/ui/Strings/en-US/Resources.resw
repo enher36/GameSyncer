@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="AppTitle" xml:space="preserve">
+    <value>SteamCloudSync</value>
+  </data>
+  <data name="SyncNow" xml:space="preserve">
+    <value>Sync Now</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="History" xml:space="preserve">
+    <value>History</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="Scanning" xml:space="preserve">
+    <value>Scanning games...</value>
+  </data>
+  <data name="LastSync" xml:space="preserve">
+    <value>Last sync</value>
+  </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="LocalSaves" xml:space="preserve">
+    <value>Local Saves</value>
+  </data>
+  <data name="CloudVersions" xml:space="preserve">
+    <value>Cloud Versions</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="CloudBackend" xml:space="preserve">
+    <value>Cloud Backend</value>
+  </data>
+  <data name="OneDrive" xml:space="preserve">
+    <value>OneDrive</value>
+  </data>
+  <data name="AmazonS3" xml:space="preserve">
+    <value>Amazon S3</value>
+  </data>
+  <data name="AutoStart" xml:space="preserve">
+    <value>Start with Windows</value>
+  </data>
+  <data name="RateLimit" xml:space="preserve">
+    <value>Rate Limit</value>
+  </data>
+</root>

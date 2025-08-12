@@ -1,0 +1,32 @@
+[package]
+name = "steam-cloud-sync-cloud"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+steam-cloud-sync-core = { path = "../core" }
+tokio = { workspace = true, features = ["full"] }
+serde = { workspace = true }
+serde_json = { workspace = true }
+anyhow = { workspace = true }
+thiserror = { workspace = true }
+reqwest = { version = "0.11", features = ["json", "multipart"] }
+async-trait = "0.1"
+oauth2 = "4.4"
+aws-sdk-s3 = "1.0"
+aws-config = "1.0"
+sha2 = "0.10"
+sha1 = "0.10"
+hmac = "0.12"
+zip = "0.6"
+futures = "0.3"
+bytes = "1.0"
+uuid = { workspace = true, features = ["v4"] }
+chrono = { version = "0.4", features = ["serde"] }
+hex = "0.4"
+urlencoding = "2.1"
+
+[dev-dependencies]
+tokio-test = "0.4"
+wiremock = "0.5"
+tempfile = "3.0"

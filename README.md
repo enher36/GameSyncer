@@ -169,12 +169,3 @@ cargo run --bin fix_database
 
 [MIT License](LICENSE)
 
-## 🔗 相关链接
-
-- [Claude Code](https://claude.ai/code) - AI辅助开发工具
-- [egui](https://github.com/emilk/egui) - Rust即时模式GUI框架
-- [Steam WebAPI](https://steamcommunity.com/dev) - Steam开发者API
-
----
-
-**用❤️和🦀 Rust开发** | **Built with ❤️ and 🦀 Rust**

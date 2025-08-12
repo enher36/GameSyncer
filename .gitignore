@@ -9,6 +9,9 @@ Cargo.lock
 *.swp
 *.swo
 
+# Development files (hidden from end users)
+.dev/
+
 # OS
 .DS_Store
 Thumbs.db

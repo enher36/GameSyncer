@@ -110,33 +110,6 @@ cargo build --workspace
 - 使用`cargo clippy`进行代码检查
 - 遵循Rust官方命名约定
 
-### 测试
-
-```bash
-# 运行所有测试
-cargo test --workspace
-
-# 运行特定crate测试
-cargo test --package steam-cloud-sync-core
-
-# 显示测试输出
-cargo test --workspace -- --nocapture
-```
-
-### 调试
-
-项目包含多个调试工具：
-
-```bash
-# 检查云存储内容
-cargo run --bin check_cos_contents
-
-# 调试存储统计
-cargo run --bin debug_cos_storage
-
-# 修复数据库问题
-cargo run --bin fix_database
-```
 
 ## 📋 待办事项
 

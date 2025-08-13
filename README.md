@@ -25,7 +25,6 @@ GameSyncer/
 │   ├── cloud/          # 云存储后端（腾讯云COS、S3）
 │   ├── persistence/    # SQLite数据持久化
 │   └── ui/             # egui GUI应用程序
-├── docs/               # 项目文档和开发记录
 └── src/bin/            # 工具程序
 ```
 
